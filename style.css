@@ -1,0 +1,46 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: aliceblue;
+}
+body, html{
+    width: 100vw;
+    height: 100vh;
+    padding: 4%;
+    background-color: black;
+}
+h1{
+    text-align: left;
+    margin: 2%;
+    font-size: 5vw;
+}
+input, ul, label, button{
+    text-align: left;
+    margin: 2%;
+    font-size: 3vw;
+}
+input{
+    color: black;
+}
+.botaoMarcar{
+    margin-left: 2vw;
+    color: rgb(255, 255, 255);
+    background-color: rgb(2, 125, 249);
+    border: solid 1vw black;
+}
+.botaoExcluir{
+    margin-left: 2vw;
+    color: rgb(255, 255, 255);
+    background-color: red;
+    border: solid 1vw black;
+}
+.botaoExcluir:hover, .botaoMarcar:hover{
+    border: solid 0.6vw rgb(215, 255, 18);
+}
+li{
+    display:block;
+}
+#botaoTarefa{
+    background-color: black;
+}
