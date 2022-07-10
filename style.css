@@ -23,6 +23,9 @@ input, ul, label, button{
 input{
     color: black;
 }
+#botaoTarefa:hover{
+    color: rgb(12, 237, 12);
+}
 .botaoMarcar{
     margin-left: 2vw;
     color: rgb(255, 255, 255);
