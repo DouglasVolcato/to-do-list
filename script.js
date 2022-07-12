@@ -1,79 +1,86 @@
-const tarefa = document.querySelector("#tarefa");
-const botao = document.querySelector("button");
-const lista = document.querySelector("ul");
+function adicionar(){
+    const ul = document.getElementById("listaNomes");
+    const inputNome = document.getElementById("inputNome");
 
-botao.addEventListener("click", () => {
+    if (inputNome.value != ""){
+        inputNome.setAttribute("placeholder", "");
+        const a = document.createElement("a");
+        const novoElemento = document.createElement("li");
+        novoElemento.className = "pedente";
+        const textoNovoElemento = document.createTextNode(`${inputNome.value}`);
+        a.appendChild(textoNovoElemento);
+        novoElemento.appendChild(a);
 
-    const item = document.createElement("li");
-    const adicionarTarefa = document.createTextNode(tarefa.value);
+        const botaoMarcar = document.createElement("button");
+        const textoBotaoMarcar = document.createTextNode("MARCAR");
+        botaoMarcar.setAttribute("onclick", "marcar()")
+        botaoMarcar.className = "marcar";
+        botaoMarcar.appendChild(textoBotaoMarcar);
+        novoElemento.appendChild(botaoMarcar);
 
-    if (tarefa.value != "") {
-        item.appendChild(adicionarTarefa);
-        
-        const novoBotao = document.createElement("spam");
-        novoBotao.className = "botaoExcluir";
+        const botaoApagar = document.createElement("button");
+        const textoBotaApagar = document.createTextNode("APAGAR");
+        botaoApagar.setAttribute("onclick", "apagar()")
+        botaoApagar.className = "apagar";
+        botaoApagar.appendChild(textoBotaApagar);
+        novoElemento.appendChild(botaoApagar);
 
-        const nomeBotao = document.createTextNode("Apagar Tarefa");
-
-        novoBotao.setAttribute("onclick","apagarTarefa()");
-
-        novoBotao.appendChild(nomeBotao);
-        item.appendChild(novoBotao);
-
-        //
-        const novoBotao2 = document.createElement("spam");
-        novoBotao2.className = "botaoMarcar";
-
-        const nomeBotao2 = document.createTextNode("Marcar Tarefa");
-
-        novoBotao2.setAttribute("onclick","marcarTarefa()");
-
-        novoBotao2.appendChild(nomeBotao2);
-
-        item.appendChild(novoBotao2);
-
-        //
-
-        lista.appendChild(item);
-
-        tarefa.value = "";
-
+        ul.appendChild(novoElemento);
+        inputNome.value = "";
     } else {
-        alert("Escreva algo para adicionar.");
+        inputNome.setAttribute("placeholder", "Escreva algo");
     };
+};
 
-});
+function marcar() {
+    const botoes = document.querySelectorAll(".marcar");
 
-function apagarTarefa() {
+    for(let n of botoes){
+        n.addEventListener("click", function(){
+            const parent = n.parentElement;
 
-    const listaCompleta = document.querySelectorAll(".botaoExcluir");
-    
-    for (let i = 0; i < listaCompleta.length; i++) {
+            if (parent.className != "feito") {
+                parent.style.textDecoration = "line-through";
+                parent.style.color = "red";
+                parent.className = "feito";
+                n.style.backgroundColor = "red";
 
-        listaCompleta[i].addEventListener("click", function(){
-
-            const li1 = listaCompleta[i].parentElement;
-            li1.style.display = "none"; 
-
-        })
-    }
-}
-
-function marcarTarefa() {
-    const listaCompleta = document.querySelectorAll(".botaoMarcar");
-
-    for (let i = 0; i < listaCompleta.length; i++) {
-
-        listaCompleta[i].addEventListener("click", function(){
-
-            const li1 = listaCompleta[i].parentElement;
-
-            if (li1.style.textDecoration != "line-through") {
-                li1.style.textDecoration = "line-through";
-            } else {
-                li1.style.textDecoration = "none";
-            };
-
+            } else{
+                parent.style.textDecoration = "none";
+                parent.style.color = "white";
+                parent.className = "pendente";
+                n.style.backgroundColor = "white";
+            }
         });
-    }
-}
+    };
+};
+
+function apagar() {
+    const botoes = document.querySelectorAll(".apagar");
+
+    for(let n of botoes){
+        n.addEventListener("click", function(){
+            const parent = n.parentElement;
+            parent.style.display = "none";
+        });
+    };
+};
+
+function limpar(){
+    const botoes = document.querySelectorAll("li");
+    for(let n of botoes){
+        n.style.display = "none";
+    };
+};
+
+function buscarItem(){
+    const itemPesquisado = document.getElementById("pesquisar");
+    const itensLista = document.querySelectorAll("a");
+    for (let n of itensLista){
+        if ((n.innerText.toUpperCase()).includes(itemPesquisado.value.toUpperCase())){
+            n.style.color = "aqua";
+        } else {
+            n.style.color = "white";
+        };
+    };
+};
