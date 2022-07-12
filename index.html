@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,18 +8,23 @@
     <title>To do list</title>
 </head>
 <body>
-    <h1>TO DO LIST:</h1>
+    <h1>To do list</h1>
 
     <form action="">
-
-    <label for="tarefa">Tarefa</label>
-    <input type="text" name="tarefa" id="tarefa">
-        <button type="button"><a id="botaoTarefa">Adicionar</a></button>
-
+        <label for="inputNome">Escreva um item</label>
+        <input type="text" name="inputNome" id="inputNome">
+        <button type="button" onclick="adicionar()">Adicionar</button>
+        <button type="button" onclick="limpar()">Limpar Lista</button>
     </form>
 
-    <ul>
+    <ul id="listaNomes">
     </ul>
+
+    <form action="">
+        <label for="pesquisar">Pesquisar item na lista</label>
+        <input type="text" name="pesquisar" id="pesquisar">
+        <button type="button" onclick="buscarItem()">Pesquisar</button>
+    </form>
 
     <script src="./script.js"></script>
 </body>
