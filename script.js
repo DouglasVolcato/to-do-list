@@ -89,11 +89,11 @@ const inputPesquisar = document.getElementById("pesquisar");
 
 inputPesquisar.addEventListener("keyup", function(){
 
-    const itensDaLista = document.querySelectorAll("li");
+    const itensDaLista = document.querySelectorAll("a");
 
     for (let n of itensDaLista){
 
-        if (n.innerText.includes(inputPesquisar.value)){
+        if (n.innerText.toUpperCase().includes(inputPesquisar.value.toUpperCase())){
             n.style.color = "aqua";
         } else {
             n.style.color = "white";
@@ -102,5 +102,4 @@ inputPesquisar.addEventListener("keyup", function(){
             n.style.color = "white";
         };
     };
-
 })
