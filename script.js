@@ -84,3 +84,23 @@ function buscarItem(){
         };
     };
 };
+
+const inputPesquisar = document.getElementById("pesquisar");
+
+inputPesquisar.addEventListener("keyup", function(){
+
+    const itensDaLista = document.querySelectorAll("li");
+
+    for (let n of itensDaLista){
+
+        if (n.innerText.includes(inputPesquisar.value)){
+            n.style.color = "aqua";
+        } else {
+            n.style.color = "white";
+        };
+        if (inputPesquisar.value == ""){
+            n.style.color = "white";
+        };
+    };
+
+})
